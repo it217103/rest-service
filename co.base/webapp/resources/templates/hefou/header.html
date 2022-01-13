@@ -1,0 +1,56 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="row">
+    <nav class="blue" th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+        <ul id="dropdown1" class="dropdown-content">
+            <li>
+                <div aria-labelledby="userDropdown"
+                     sec:authorize="isAuthenticated()">
+                    <a class="dropdown-item" th:href="@{/logout}">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="">
+                    <a th:href="@{/}" class="collapse list-unstyled">
+                        <i class="fas fa-home"></i>
+                        Main
+                    </a>
+                </li>
+                <li>
+                    <ul id="pageSubmenu" class="dropdown-content">
+                        <li sec:authorize="hasRole('ROLE_USER')">
+                            <a th:href="@{/addapplication}">send application</a>
+                        </li>
+                    </ul>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-trigger" href="#!" data-target="adminSubmenu"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
+                        <i class="fas fa-copy"></i>
+                        Managment
+                    </a>
+                    <ul id="adminSubmenu" class="dropdown-content">
+                        <li sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/listapplications}">Manage applications</a>
+                        </li>
+                        <li sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/liststudents}">Manage users</a>
+                        </li>
+                        <li sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/addstudent}">Add user</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">Online <span sec:authentication="principal.username">User</span>
+                        <i class="fas fa-bars right"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+

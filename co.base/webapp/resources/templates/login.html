@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+    <link rel="stylesheet" type="text/css"
+          href="/css/login.css"/>
+    <title>Online application system for Master's Degree</title>
+</head>
+<body>
+<div class="jumbotron">
+    <br>
+    <h1 class="" ><a href="#" th:href="@{/}">Online application system for Master's Degree.</a></h1>
+    <p class="lead">Welcome.</p>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <form class="form-signin"th:action="@{/login}" method="post">
+                        <h1>Login</h1>
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">Wrong Credentials.</div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-info">You have logged out.</div>
+                        </div>
+                        <div class="form-label-group">
+                            <p>User Email:</p>
+                            <input type="text"
+                                   id="username" name="username" class="form-control"
+                                   autofocus="autofocus" placeholder="Username" />
+                        </div>
+
+                        <div class="form-label-group">
+                            <p>Password:</p>
+                            <input type="password" id="password" name="password" class="form-control"
+                                   placeholder="Password" />
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="login-submit" id="login-submit">Συνδεση</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</body>
+</html>

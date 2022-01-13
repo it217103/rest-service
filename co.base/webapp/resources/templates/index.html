@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://kit.fontawesome.com/2a9be2991c.js" crossorigin="anonymous"></script>
+    <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/profile.css}" type="text/css"/>
+    <title>Σύστημα ηλεκτρονικής υποβολής αιτήσεων μεταπτυχιακού</title>
+    <script type="text/javascript"
+            th:src="@{/webjars/jquery/jquery.min.js/}"></script>
+    <script type="text/javascript" charset="utf8" th:src="@{/js/main.js}"></script>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/webjars/materializecss/css/materialize.min.css}"/>
+    <script th:src="@{/webjars/materializecss/js/materialize.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="wrapper">
+    <div id="content">
+        <div class="jumbotron" sec:authorize="hasRole('ROLE_USER')">
+            <h2>Σύστημα ηλεκτρονικής υποβολής αιτήσεων σίτισης.</h2>
+            <p>Στο νέο κτήριο του Χαροκοπείου Πανεπιστημίου στον Ταύρο (Ομήρου 9) λειτουργεί το Φοιτητικό εστιατόριο, όπου μπορούν
+                να σιτίζονται όλα τα μέλη της Πανεπιστημιακής Κοινότητας, είτε δωρεάν είτε επί πληρωμή.
+                Το εστιατόριο λειτουργεί καθ' όλη τη διάρκεια του έτους, εκτός από τους μήνες Ιούλιο και Αύγουστο. Οι
+                φοιτητές, οι οποίοι πληρούν τις προϋποθέσεις και τα κριτήρια που απαιτούνται λαμβάνουν την κάρτα
+                σίτισης,
+                κατόπιν ΗΛΕΚΤΡΟΝΙΚΗΣ ΥΠΟΒΟΛΗΣ ΑΙΤΗΣΗΣ, την οποία επιδεικνύουν κατά την είσοδό τους στο εστιατόριο του
+                Πανεπιστημίου.
+            </p>
+            <hr class="my-4">
+            <p>Εφόσον ο λογαριασμός σας έχει ενεργοποιηθεί από την υπηρεσία Φοιτητικής Μέριμνας μπορείτε να υποβάλετε
+                την αίτηση σας για δωρεάν σίτιση ακολουθόντας τον παρακάτω σύνδεσμο.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" role="button" th:href="@{/addapplication}">Αίτηση</a>
+            </p>
+        </div>
+        <div class="jumbotron" sec:authorize="hasRole('ROLE_ADMIN')">
+            <h2>Σύστημα ηλεκτρονικής υποβολής αιτήσεων σίτισης.</h2>
+            <p>
+                Καλώς ήρθατε στην διαχειριστική προβολή του συστήματος. Από εδώ μπορείτε να διαχειριστείτε την πρόσβαση
+                στην στο σύστημα, τις αιτήσεις των χρηστών,
+                καθώς και να παραμετροποιήσετε την εφαρμογή.
+            </p>
+            <hr class="my-4">
+            <p>Γρήγοροι σύνδεσμοι:</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" role="button" th:href="@{/listusers}">Λίστα χρηστών</a>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" role="button" th:href="@{/listapplications}">Λίστα
+                            αιτήσεων</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>
