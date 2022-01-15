@@ -39,10 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("classpath:/static/**",
                         "/webjars/**").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/listusers").access("hasAuthority('ROLE_ADMIN')")
+                .antMatchers("/student").access("hasAuthority('ROLE_ADMIN')")
                 .antMatchers("/listapplications").access("hasAuthority('ROLE_ADMIN')")
                 .antMatchers("/edit/**").access("hasAuthority('ROLE_ADMIN')")
-                .antMatchers("/adduser").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/addstudent").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin()
                 .loginPage("/login")
