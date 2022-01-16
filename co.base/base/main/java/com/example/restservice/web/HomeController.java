@@ -2,8 +2,12 @@ package base.main.java.com.example.restservice.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import base.main.java.com.example.restservice.service.StudentService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,22 +19,15 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/showForm")
-    public String showForm() {
-        return "helloworld-form";
+
+    @RequestMapping("/student")
+    public String userlist() {
+        return "student";
     }
 
-    @RequestMapping("/processForm")
-    public String processForm() {
-        return "helloworld";
+    @RequestMapping("/login")
+    public String login(Model model) {
+        return "login";
     }
 
-    @RequestMapping("/processFormv2")
-    public String processFormv2(HttpServletRequest request, Model model) {
-        String theName = request.getParameter("studentName");
-        theName = theName.toUpperCase();
-        String result = "Hello " + theName;
-        model.addAttribute("message", result);
-        return "helloworld";
-    }
 }
