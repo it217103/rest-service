@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("classpath:/static/**",
                         "/webjars/**").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/student").access("hasAuthority('ROLE_ADMIN')")
+                .antMatchers("/student").access("hasAuthority('ROLE_USER')")
                 .antMatchers("/listapplications").access("hasAuthority('ROLE_ADMIN')")
                 .antMatchers("/edit/**").access("hasAuthority('ROLE_ADMIN')")
                 .antMatchers("/addstudent").access("hasRole('ROLE_ADMIN')")
