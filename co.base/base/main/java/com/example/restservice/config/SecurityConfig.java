@@ -29,6 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
+    //security configuration(Using HttpSecurity)
+    //authorization of role
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -60,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         webSecurity.ignoring().antMatchers("/resources/**");
         webSecurity.ignoring().antMatchers("/");
     }
-
+//password encoder
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -69,6 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource((DataSource) getStudentService()).passwordEncoder(passwordEncoder()).usersByUsernameQuery("Select username,password, enabled from user username=?").authoritiesByUsernameQuery("select username, authority from authorities wherer username=?");
+        auth.jdbcAuthentication().dataSource((DataSource) getStudentService()).passwordEncoder(passwordEncoder()).usersByUsernameQuery("Select username,password, enabled from user username=?").authoritiesByUsernameQuery("select username, authority from authorities where username=?");
     }
 }

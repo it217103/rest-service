@@ -23,7 +23,7 @@ public class Student {
     public Student(String first_name, String last_name, String email, String password){
         this.first_name = first_name;
         this.last_name = last_name;
-        this.email = email;
+        Student.email = email;
         this.password = password;
     }
 

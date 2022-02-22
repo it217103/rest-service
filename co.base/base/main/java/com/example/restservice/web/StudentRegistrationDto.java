@@ -43,7 +43,7 @@ public class StudentRegistrationDto {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("student") @Valid StudentRegistrationDto StudentDto,
+    public String registerUserAccount(@ModelAttribute("Student") @Valid StudentRegistrationDto StudentDto,
                                       BindingResult result) {
 
         Student existing = (Student) getStudentService().findbyEmail((String) Student.getEmail());
